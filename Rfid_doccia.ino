@@ -27,7 +27,7 @@ void setup() {
 void loop() {
   tt = millis();
   Serial.print(dtt);
-  Serial.print(" - ");
+  Serial.print(" ms - ");
   Serial.print((tp - dt) / 1000);
   Serial.print(" - ");
   switch (st) {
