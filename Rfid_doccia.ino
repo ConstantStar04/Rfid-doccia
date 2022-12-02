@@ -27,7 +27,7 @@ void setup() {
 void loop() {
   tt = millis();
   Serial.print(dtt);
-  Serial.print(" ms - ");
+  Serial.print(" - ");
   Serial.print((tp - dt) / 1000);
   Serial.print(" - ");
   switch (st) {
@@ -88,7 +88,6 @@ void verifica() {//10
     if (pp == 0 && cs[i] == cl[i]) {
       st = 20;
       lcd.clear();
-      lcd.setCursor(0, 0);
       lcd.print("lavati");
       lcd.setCursor(0, 1);
       lcd.print("tempo:");
@@ -97,6 +96,7 @@ void verifica() {//10
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("Tessera errata");
+      delay(800);
       lcd.clear();
       lcd.print("Doccia pronta");
       lcd.setCursor(0, 1);
@@ -131,6 +131,7 @@ void verifica() {//10
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("Tessera errata");
+      delay(800);
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("lavati");
@@ -175,7 +176,6 @@ void doccia() {//20
 }
 //####################################################################################################################################
 void psdoccia() {//150
-  delay(300);
   digitalWrite(lb, 0); digitalWrite(lv, 0); digitalWrite(lg, 0); digitalWrite(lr, 1);
   if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) { //carta non presente true [!false]
     Serial.println("verifica ripressa");
