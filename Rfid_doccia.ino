@@ -6,13 +6,13 @@
 const byte SS_PIN = 10;
 const byte RST_PIN = 9;
 const byte lg = 2, lr = 3, lv = 4, lb = 5;
-const byte cs[4] = {148, 46, 203, 115};
+const byte cs[4] = {218, 31, 98, 163}; 
 byte cl[4] = {NULL};
 byte vv = false, st = 0, pp = 0;
 unsigned long int dt, t1, dt2, t2,dtt,tt,dtc,tc = 0;
 const long int tp = 160000;//160000
 
-MFRC522 mfrc522(SS_PIN, RST_PIN); LiquidCrystal_I2C lcd(0x27, 20, 4);
+MFRC522 mfrc522(SS_PIN, RST_PIN); LiquidCrystal_I2C lcd(0x3F, 16, 2);
 
 void setup() {
   Serial.begin(9600);
@@ -95,8 +95,10 @@ void verifica() {//10
     } else if (pp == 0 && cs[i] != cl[i]) {
       lcd.clear();
       lcd.setCursor(0, 0);
+      digitalWrite(lr,1);
       lcd.print("Tessera errata");
-      delay(800);
+      delay(1000);
+      digitalWrite(lr,0);
       lcd.clear();
       lcd.print("Doccia pronta");
       lcd.setCursor(0, 1);
